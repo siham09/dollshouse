@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivy's Boutique & Art Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f3f0;
+            color: #333;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+    <header class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 text-indigo-900">Ivy's Boutique & Art Studio</h1>
+        <p class="text-lg md:text-xl text-gray-600">Where every creation tells a story.</p>
+    </header>
+
+    <main id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Products will be dynamically inserted here by JavaScript -->
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const products = [
+                {
+                    id: 'madhubani-art',
+                    name: 'A Mithila Tapestry: Hand-Stitched Art',
+                    description: "This unique wall hanging is a modern tribute to the ancient folk art of **Madhubani** from India. For centuries, this traditional art form has been used by women to tell stories of myth and nature. Here, the classic painted motifs are transformed into a tactile masterpiece, meticulously hand-stitched with threads, ropes, and beads. The deep-blue fabric acts as a canvas for celestial and symbolic designs, making this piece a beautiful blend of heritage and modern artistry. It's more than just decor—it's a story, stitched by hand for your home.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120792.jpg-38a807e3-6e88-4e42-8383-a218a8deca1c'
+                },
+                {
+                    id: 'block-print-bedsheets',
+                    name: 'A Story of Print: Hand-Block Printed Bedsheet Set',
+                    description: "This is more than a bedsheet—it’s a story told through the ancient art of **hand-block printing**. For centuries, artisans have carved intricate designs into wooden blocks, then pressed them by hand onto fine cotton using natural dyes. Each unique pattern, with its subtle variations, is a signature of this timeless handmade process. This set, complete with pillowcases, is a beautiful way to bring a piece of this living heritage and artisan tradition into your home.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120793.jpg-e9f4fd4d-08a2-4471-afd3-d20f667ae0e7'
+                },
+                {
+                    id: 'tie-dye-table-set',
+                    name: 'A Rhythm of Color: Hand-Tie Dyed Table Set',
+                    description: "This table runner and placemat set is a celebration of the ancient art of **tie-dye**. With roots in cultures from India to Japan, this technique has been used for centuries to create vibrant, one-of-a-kind patterns. Each piece is meticulously hand-tied and dyed on soft cotton, a process that creates a mesmerizing rhythm of color and light. The beautiful, irregular lines are a direct result of the artisan's touch, ensuring no two sets are exactly alike. This unique set brings a touch of vibrant, handcrafted artistry to any dining space.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120796.jpg-ce1470ba-1bb1-42df-bdaa-d9fec594ae7f'
+                },
+                {
+                    id: 'patchwork-table-set',
+                    name: 'A Story in Stitches: Recycled Patchwork Table Set',
+                    description: "This unique table runner and placemat set is a vibrant tapestry, created through the timeless art of **patchwork**. Historically, this craft was a way to lovingly transform fabric scraps into something new and beautiful. Each piece is a meticulous work of hand-stitching, bringing together a collection of thoughtfully chosen recycled fabrics. The result is a one-of-a-kind design where different patterns and textures meet to tell a new story. This set is a perfect example of sustainable artistry, adding both color and conscience to your home.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120774.jpg-24de9a5d-1c1c-47db-b3ea-629b9c0e4587'
+                },
+                {
+                    id: 'tribal-table-set',
+                    name: 'Threads of Heritage: Tribal Fabric Table Set',
+                    description: "This stunning table set is a celebration of a vibrant cultural heritage, created with traditional **tribal fabrics and embroidery**. Handwoven by skilled artisans, each piece carries the stories of a community, told through bold patterns and rich colors. Every intricate stripe and zig-zag is a result of time-honored weaving and embroidery techniques, giving the fabric a unique texture and depth. More than just decor, this set brings the soulful artistry of a living tradition to your home.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120778.jpg-7d61912e-ea2a-4a8f-9d8b-234574d247c8'
+                },
+                {
+                    id: 'katan-cushions',
+                    name: 'Threads of Luxury: Katan and Silk Cushion Covers',
+                    description: "These cushion covers are a beautiful blend of rich materials and meticulous handwork. They are crafted from pure **Katan** and **silk**, two fabrics celebrated for their luxurious feel and history in South Asian textile traditions. Each piece is hand-stitched, combining the smooth texture of silk with the regal, patterned beauty of Katan. This stunning contrast highlights the artisan’s skill and eye for design. More than just comfort, these covers bring a touch of heritage and timeless elegance to any room.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120773.jpg-39bce59c-9dd8-46dc-a8a4-fed11a8ef436'
+                },
+                {
+                    id: 'recycled-totes',
+                    name: 'Stories in Stitches: Recycled Tote Bags',
+                    description: "These tote bags are a beautiful example of sustainable artistry, with each one telling a unique story. They are handcrafted from carefully selected recycled fabrics, a process that breathes new life into old materials. The result is a collection of one-of-a-kind designs where different patterns and textures are brought together by hand. Each bag is a stylish statement of creativity and conscience, making it a perfect blend of fashion and purpose.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120782.jpg-bd110e60-e3e7-4e5e-96b2-c0df15b2e705'
+                },
+                {
+                    id: 'fabric-fusion-bags',
+                    name: 'A Fusion of Fabrics: Handcrafted Bag Collection',
+                    description: "This collection of handcrafted bags is a beautiful fusion of heritage and contemporary style. They are thoughtfully made from a unique blend of fabrics, including durable **canvas**, classic **jeans**, and the iconic **Grameen check**. The Grameen check fabric carries a powerful story of social empowerment, as it is handwoven by rural artisans, preserving their traditional craft. This combination of textures and patterns creates a truly unique accessory. From the versatile tote to the practical crossbody, each bag is a stylish statement of purpose and a testament to a living tradition.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120771.jpg-9474509c-6b97-4021-bf78-d6f0de3f68c6'
+                },
+                {
+                    id: 'ethnic-fusion-bags',
+                    name: 'Threads of Tradition: Ethnic Fusion Bags',
+                    description: "This collection is a beautiful example of **ethnic fusion**, where ancient traditions are reimagined for contemporary style. Handcrafted by indigenous artisans, each piece is a celebration of authentic skill and cultural storytelling. Using natural materials like **cane** and **tribal jute**, the artisans meticulously weave together different textures and vibrant colors. The bold patterns, intricate beadwork, and tassels are a testament to a unique heritage. These bags are more than just accessories; they are a piece of living tradition, bringing the soulful artistry of a community into the modern world.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120770.jpg-4810efb4-72a5-409f-80d4-40fc81a1504a'
+                },
+                {
+                    id: 'pouch-batua-bags',
+                    name: 'A Tapestry of Tradition: Pouch and Batua Bags',
+                    description: "These charming pouch and **Batua bags** are a beautiful miniature tapestry of South Asian heritage. They are handcrafted from a unique blend of fabrics, each with its own story. This collection brings together the rustic, hand-spun **Khadi**; the iconic plaid **Gamchha**; the beautifully woven **ethnic Pinon**; and the luxurious feel of **silk**. This fusion of textures and patterns creates a stunning, one-of-a-kind design. More than just an accessory, each bag is a small piece of art that re-imagines tradition, allowing you to carry a story of culture and craftsmanship with you.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120761.jpg-6ec28961-721e-4ac7-8376-e455dd176cd3'
+                },
+                {
+                    id: 'handcrafted-stoles',
+                    name: 'A Tribute of Threads: Handcrafted Stoles',
+                    description: "These unique stoles are a beautiful tribute, crafted to honor someone special. For centuries, presenting a fine garment has been a cherished tradition in many cultures, symbolizing deep respect and gratitude. Each piece is meticulously handmade, featuring a variety of artistic techniques like embroidery and printing. The unique designs and heartfelt messages make every stole a truly one-of-a-kind creation. More than just an accessory, this is a meaningful gift—a tangible symbol of appreciation and a cherished keepsake that carries a powerful story.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120788.jpg-4bf38408-5c20-45e3-9796-d6f29984a0c8'
+                },
+                {
+                    id: 'patchwork-bedsheets',
+                    name: 'A Story of Comfort: Recycled Patchwork Bedsheet Set',
+                    description: "These bedsheets are a beautiful example of sustainable artistry, each one telling a unique story through a **patchwork** design. They are lovingly handcrafted from carefully selected recycled fabrics, a process that breathes new life into old materials. The result is a collection of one-of-a-kind designs where different patterns and textures are brought together by hand. With their subtle variations and artful composition, these bedsheets add both style and conscience to your bedroom.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120798.jpg-7dfb385d-5b95-494b-9121-4bd29529fd5a'
+                },
+                {
+                    id: 'silk-cotton-scarves',
+                    name: 'A Timeless Touch: Handcrafted Silk and Cotton Scarves',
+                    description: "These scarves are a beautiful testament to the soul of handcrafted textiles. Meticulously made from a blend of handloom **silk** and **cotton**, each piece carries the warmth and skill of the artisan's touch. The careful, hand-spinning and weaving process creates a unique texture and a timeless, natural elegance. Lightweight and luxurious, these scarves are more than just an accessory; they are a piece of wearable heritage, designed for comfort and crafted to be cherished for years to come.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120764.jpg-d79d03c6-ee07-4c7a-9a41-ee599cf04720'
+                },
+                {
+                    id: 'shesher-kobita-wall-hang',
+                    name: 'A Poetic Tribute: The Last Poem by Rabindranath Tagore',
+                    description: "This wall hanging is a visual tribute, celebrating the lyrical genius of Nobel laureate **Rabindranath Tagore**. It features a screen print of the calligraphic script of his beloved poem, **'Shesher Kobita'** (The Last Poem), a timeless work on love and philosophy. The elegant script turns the poem's words into a visual song, beautifully framed by a simple border. This piece is more than just decor; it’s a treasured work of art that captures a powerful piece of Bengali literary heritage, bringing a deep source of inspiration to any space.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120775.jpg-696044bc-86aa-4f36-b78d-2c61b766316b'
+                },
+                {
+                    id: 'pitha-wall-hang',
+                    name: 'A Sweet Heritage: Folk-Art Wall Hanging',
+                    description: "This unique wall hanging is a beautiful celebration of folk artistry, inspired by the soulful tradition of handmade **pitha** (cakes). In rural communities, *pitha* are not just food; they are an art form with intricate designs passed down through generations of women. This piece honors that heritage, transforming the delicate motifs of a traditional meal into a permanent work of art. Each square is a canvas of meticulous hand-stitching, using a blend of embroidery and mirror work to bring the patterns to life. It is a heartfelt tribute to the creativity of women and the quiet beauty of everyday traditions.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120758.jpg-0dd7d47a-c9b0-474f-9842-74e12641474b'
+                },
+                {
+                    id: 'fusion-ornaments',
+                    name: 'Earth and Elegance: Handmade Fusion Ornaments',
+                    description: "This is a collection of handcrafted **fusion ornaments**, where the earthy beauty of nature meets the elegance of human artistry. Each piece is a unique tapestry of natural materials. Our artisans bring together a beautiful mix of **beads, bamboo, rope, metals, wood, thread, and seashells** to create a soulful story for every accessory. From the bold statement of a necklace to the delicate touch of earrings, each piece is a testament to creative vision. These aren't just accessories; they are wearable art, allowing you to carry a piece of nature's heritage with you.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120787.jpg-f116435d-2a34-4ff8-981a-5a08e7f3e358'
+                },
+                {
+                    id: 'painted-clay-pot',
+                    name: 'A Canvas of Clay: Hand-Painted Pot',
+                    description: "This unique piece is a beautiful canvas, born from the timeless art of pottery. Handcrafted from **burnt clay**, this pot marries an ancient, earthy material with a vibrant, modern artistic vision. Its surface is painted with an expressive, abstract design and adorned with delicate **mirror work**. The mirror pieces catch and reflect light, giving the pot a soulful, lively quality. This is more than just a vessel; it’s a testament to the artisan’s touch, adding a unique piece of handcrafted history and modern art to your home.",
+                    image: 'https://storage.googleapis.com/assistive-codes-prod/uploaded/1000120802.jpg-9a4d79ce-bcf7-410a-b32a-318424090ca5'
+                }
+            ];
+
+            const productsGrid = document.getElementById('products-grid');
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col items-center p-6';
+                productCard.id = product.id;
+
+                // Create a container for the image
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'w-full h-80 overflow-hidden mb-4 rounded-lg flex items-center justify-center';
+                const img = document.createElement('img');
+                img.src = product.image;
+                img.alt = product.name;
+                img.className = 'w-full h-full object-cover';
+                img.onerror = function() {
+                    this.onerror = null;
+                    this.src = `https://placehold.co/400x300/e2e8f0/64748b?text=Image+Unavailable`;
+                };
+                imageContainer.appendChild(img);
+                productCard.appendChild(imageContainer);
+
+                const title = document.createElement('h2');
+                title.className = 'text-2xl font-bold text-center text-gray-900 mt-4 mb-2';
+                title.textContent = product.name;
+                productCard.appendChild(title);
+
+                const description = document.createElement('p');
+                description.className = 'text-center text-gray-700 mb-6 flex-grow';
+                description.innerHTML = product.description; // Using innerHTML to preserve bold tags
+                productCard.appendChild(description);
+
+                const qrCodeContainer = document.createElement('div');
+                qrCodeContainer.className = 'flex flex-col items-center space-y-2 mt-auto';
+                const qrCodeTitle = document.createElement('p');
+                qrCodeTitle.className = 'text-sm text-gray-500 font-semibold';
+                qrCodeTitle.textContent = 'Scan to view product';
+                qrCodeContainer.appendChild(qrCodeTitle);
+
+                const qrCodeDiv = document.createElement('div');
+                qrCodeDiv.id = `qrcode-${product.id}`;
+                qrCodeDiv.className = 'p-2 bg-white rounded-lg shadow';
+                qrCodeContainer.appendChild(qrCodeDiv);
+
+                productCard.appendChild(qrCodeContainer);
+                productsGrid.appendChild(productCard);
+
+                // Generate QR Code for each product
+                const productUrl = `${window.location.origin}${window.location.pathname}#${product.id}`;
+                new QRCode(document.getElementById(`qrcode-${product.id}`), {
+                    text: productUrl,
+                    width: 128,
+                    height: 128,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            });
+        });
+    </script>
+</body>
+</html>
